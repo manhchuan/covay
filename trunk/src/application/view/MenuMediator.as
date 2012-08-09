@@ -1,6 +1,6 @@
 package application.view
 {
-	import application.ApplicationFacade;
+	import application.AFacade;
 	import application.model.DataProxy;
 	import application.view.components.Menu;
 	import application.view.sounds.AlertSound;
@@ -52,32 +52,32 @@ package application.view
 		{
 			if ( !data.inGame )
 			{
-				sendNotification(ApplicationFacade.START_GAME);
+				sendNotification(AFacade.START_GAME);
 				data.inGame = true;			
 			}
 			else
 			{
 				if ( data.soundState ) alertSound.play();				
-				sendNotification(ApplicationFacade.RESTART_REQUEST);
+				sendNotification(AFacade.RESTART_REQUEST);
 			}
 		}
 		
 		private function onRules(event:Event):void
 		{
 			if ( data.soundState ) alertSound.play();
-			sendNotification(ApplicationFacade.SHOW_RULES);
+			sendNotification(AFacade.SHOW_RULES);
 		}
 		
 		private function onHistory(event:Event):void
 		{
 			if ( data.soundState ) alertSound.play();
-			sendNotification(ApplicationFacade.SHOW_HISTORY);
+			sendNotification(AFacade.SHOW_HISTORY);
 		}
 		
 		private function onOptions(event:Event):void
 		{
 			if ( data.soundState ) alertSound.play();
-			sendNotification(ApplicationFacade.SHOW_OPTIONS);
+			sendNotification(AFacade.SHOW_OPTIONS);
 		}
 	}
 }

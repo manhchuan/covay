@@ -1,6 +1,6 @@
 package application.view
 {
-	import application.ApplicationFacade;
+	import application.AFacade;
 	import application.model.DataProxy;
 	import application.view.components.Board;
 	
@@ -28,33 +28,33 @@ package application.view
 		
 		override public function listNotificationInterests():Array
 		{
-			return new Array( ApplicationFacade.START_GAME,
-							  ApplicationFacade.RESTART_GAME,
-							  ApplicationFacade.AI_MOVE,
-							  ApplicationFacade.GAME_OVER,
-							  ApplicationFacade.DRAWN_GAME,
-							  ApplicationFacade.SOUND_CHANGE );
+			return new Array( AFacade.START_GAME,
+							  AFacade.RESTART_GAME,
+							  AFacade.AI_MOVE,
+							  AFacade.GAME_OVER,
+							  AFacade.DRAWN_GAME,
+							  AFacade.SOUND_CHANGE );
 		}
 		
 		override public function handleNotification(notification:INotification):void
 		{
 			switch ( notification.getName() )
 			{
-				case ApplicationFacade.START_GAME:
+				case AFacade.START_GAME:
 					board.setBoardEnabled(true);
 					board.makeFirstMove();
 					break;
 					
-				case ApplicationFacade.RESTART_GAME:
+				case AFacade.RESTART_GAME:
 					board.setBoardEnabled(true);
 					board.makeFirstMove();
 					break;
 				
-				case ApplicationFacade.AI_MOVE:
+				case AFacade.AI_MOVE:
 					board.showAIMove( notification.getBody().x, notification.getBody().y);
 					break;
 				
-				case ApplicationFacade.GAME_OVER:
+				case AFacade.GAME_OVER:
 					var y1:Number = notification.getBody().y1;
 					var x1:Number = notification.getBody().x1;
 					var y2:Number = notification.getBody().y2;
@@ -65,11 +65,11 @@ package application.view
 					board.setBoardEnabled(false);
 					break;
 				
-				case ApplicationFacade.DRAWN_GAME:
+				case AFacade.DRAWN_GAME:
 					board.setBoardEnabled(false);
 					break;
 				
-				case ApplicationFacade.SOUND_CHANGE:
+				case AFacade.SOUND_CHANGE:
 					board.soundState = notification.getBody() as Boolean;
 					break;
 			}
@@ -82,7 +82,7 @@ package application.view
 		
 		private function onTileClick(event:Event):void
 		{
-			sendNotification(ApplicationFacade.USER_MOVE, board.tileCoordinate);
+			sendNotification(AFacade.USER_MOVE, board.tileCoordinate);
 		}
 	}
 }

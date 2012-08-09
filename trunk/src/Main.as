@@ -1,17 +1,17 @@
 package 
 {
-	import application.ApplicationFacade;
+	import application.AFacade;
 	import flash.display.Sprite;
 	
 	
 	[SWF(bgColor = "#000000", frameRate = "32", width = "520", height = "630")]
 	public class Main extends Sprite
 	{
-		private var facade:ApplicationFacade;
+		private var facade:AFacade;
 		public function Main()
 		{
-			facade = ApplicationFacade.getInstance();
-			facade.sendNotification(ApplicationFacade.STARTUP, this);
+			facade = AFacade.getInstance();
+			facade.sendNotification(AFacade.STARTUP, this);
 		}
 	}
 }
