@@ -1,6 +1,6 @@
 package application.model
 {
-	import application.ApplicationFacade;
+	import application.AFacade;
 	
 	import com.ericfeminella.collections.IMap;
 	import com.ericfeminella.collections.LocalPersistenceMap;
@@ -128,7 +128,7 @@ package application.model
 		public function set soundState(value:Boolean):void
 		{
 			_soundState = value;
-			sendNotification(ApplicationFacade.SOUND_CHANGE, value);
+			sendNotification(AFacade.SOUND_CHANGE, value);
 			map.put("soundState", value);
 		}
 		
@@ -176,15 +176,12 @@ package application.model
 		{
 			movesArray[x][y] = userTile;
 			
-			if ( isWinner(x, y, userTile) == winningMove )
-			{
+			if ( isWinner(x, y, userTile) == winningMove ){
 				userWinCount++;
 				inGame = false;
-				sendNotification( ApplicationFacade.GAME_OVER, wrapWinCoordinates(userTile) );
+				sendNotification( AFacade.GAME_OVER, wrapWinCoordinates(userTile) );
 				resetGame();
-			}
-			else
-			{
+			}else{
 				AIMove();
 			}
 		}
@@ -422,18 +419,18 @@ package application.model
     		coordinates.x = xAI;
     		coordinates.y = yAI;
     		
-    		sendNotification(ApplicationFacade.AI_MOVE, coordinates);
+    		sendNotification(AFacade.AI_MOVE, coordinates);
     		
     		if ( isWinner(xAI, yAI, AITile) == winningMove )
     		{
     			AIWinCount++;
     			inGame = false;
-    			sendNotification( ApplicationFacade.GAME_OVER, wrapWinCoordinates(AITile) );
+    			sendNotification( AFacade.GAME_OVER, wrapWinCoordinates(AITile) );
     			resetGame();
     		}
     		else if ( drawPosition )
     		{
-    			sendNotification(ApplicationFacade.DRAWN_GAME);
+    			sendNotification(AFacade.DRAWN_GAME);
     			inGame = false;
     			resetGame();
     		}

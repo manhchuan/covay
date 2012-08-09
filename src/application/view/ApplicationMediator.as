@@ -1,6 +1,6 @@
 package application.view
 {
-	import application.ApplicationFacade;
+	import application.AFacade;
 	import application.model.DataProxy;
 	import application.model.InfoProxy;
 	import application.utils.DropShadowFilterHelper;
@@ -67,19 +67,19 @@ package application.view
 		
 		override public function listNotificationInterests():Array
 		{
-			return new Array( ApplicationFacade.GAME_OVER,
-							  ApplicationFacade.RESTART_REQUEST,
-							  ApplicationFacade.DRAWN_GAME,
-							  ApplicationFacade.SHOW_RULES,
-							  ApplicationFacade.SHOW_HISTORY,
-							  ApplicationFacade.SHOW_OPTIONS );
+			return new Array( AFacade.GAME_OVER,
+							  AFacade.RESTART_REQUEST,
+							  AFacade.DRAWN_GAME,
+							  AFacade.SHOW_RULES,
+							  AFacade.SHOW_HISTORY,
+							  AFacade.SHOW_OPTIONS );
 		}
 		
 		override public function handleNotification(notification:INotification):void
 		{
 			switch( notification.getName() )
 			{
-				case ApplicationFacade.GAME_OVER:
+				case AFacade.GAME_OVER:
 					var winner:Number = notification.getBody().tile;
 					
 					if ( winner == 1 )
@@ -92,35 +92,35 @@ package application.view
 					}
 					break;
 				
-				case ApplicationFacade.RESTART_REQUEST:
+				case AFacade.RESTART_REQUEST:
 					showModal();
 					showAlert("This will restart your current game.\nAre you sure?", AlertBox.YES);
 					
 					alignContent();
 					break;
 				
-				case ApplicationFacade.DRAWN_GAME:
+				case AFacade.DRAWN_GAME:
 					showModal();
 					showAlert("Only draw is available.\nTry again.", AlertBox.OK);
 					
 					alignContent();
 					break;
 				
-				case ApplicationFacade.SHOW_RULES:
+				case AFacade.SHOW_RULES:
 					showModal();
 					showInfo("rules", info.rules);
 					
 					alignContent();
 					break;
 				
-				case ApplicationFacade.SHOW_HISTORY:
+				case AFacade.SHOW_HISTORY:
 					showModal();
 					showInfo("history", info.history);
 					
 					alignContent();
 					break;
 				
-				case ApplicationFacade.SHOW_OPTIONS:
+				case AFacade.SHOW_OPTIONS:
 					showModal();
 					showOptions();
 					
@@ -165,7 +165,7 @@ package application.view
 		
 		private function onYes(event:Event):void
 		{
-			sendNotification(ApplicationFacade.RESTART_GAME);
+			sendNotification(AFacade.RESTART_GAME);
 			removeAlert();
 			AIWinCount.text = "CPU:" + data.AIWinCount;
 		}

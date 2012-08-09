@@ -20,16 +20,16 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\soft\renju_1.5\source\src</path-element>
+      <path-element>D:\iis\covay\trunk\src</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\soft\renju_1.5\source\lib\fl.swc</path-element>
-      <path-element>C:\soft\renju_1.5\source\lib\ScrollBar.swc</path-element>
+      <path-element>D:\iis\covay\trunk\lib\fl.swc</path-element>
+      <path-element>D:\iis\covay\trunk\lib\ScrollBar.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\soft\renju_1.5\source\src\Main.as</path-element>
+    <path-element>D:\iis\covay\trunk\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>32</default-frame-rate>
